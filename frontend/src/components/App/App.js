@@ -44,12 +44,12 @@ class App extends Component {
           </div>
           <div className="app-main">
             <div className="app-main-sidebar">
-              <NavLink className="app-main-sidebar-link" to="/">Characters</NavLink>
-              <NavLink className="app-main-sidebar-link" to="/professions">Professions</NavLink>
-              <NavLink className="app-main-sidebar-link" to="/traits">Traits</NavLink>
-              <NavLink className="app-main-sidebar-link" to="/skills">Skills</NavLink>
-              <NavLink className="app-main-sidebar-link" to="/equipment">Equipment</NavLink>
-              <NavLink className="app-main-sidebar-link" to="/analysis">Analysis</NavLink>
+              <NavLink className="app-main-sidebar-link" to="/">CHARACTERS</NavLink>
+              <NavLink className="app-main-sidebar-link" to="/professions">PROFESSIONS</NavLink>
+              <NavLink className="app-main-sidebar-link" to="/traits">TRAITS</NavLink>
+              <NavLink className="app-main-sidebar-link" to="/skills">SKILLS</NavLink>
+              <NavLink className="app-main-sidebar-link" to="/equipment">EQUIPMENT</NavLink>
+              <NavLink className="app-main-sidebar-link" to="/analysis">ANALYSIS</NavLink>
             </div>
             <div className="app-main-routes">
               <Route path="/" exact component={Characters} />

@@ -29,6 +29,12 @@
 }
 
 .app-main-sidebar-link {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  padding-left: 10px;
+  font-size: 18px;
   color: #cccccc;
 	text-decoration: none;
 }
