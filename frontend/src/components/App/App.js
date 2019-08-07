@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, NavLink, Route } from "react-router-dom";
 import axios from "axios";
 import Analysis from "../Analysis/Analysis"
 import Characters from "../Characters/Characters"
@@ -35,33 +34,27 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div className="app">
-          <div className="app-header">
-            <div className="app-header-logo">
-              <span>GW2</span><span className="app-header-logo-end">THEORYCRAFTER</span>
-            </div>
-          </div>
-          <div className="app-main">
-            <div className="app-main-sidebar">
-              <NavLink className="app-main-sidebar-link" to="/">CHARACTERS</NavLink>
-              <NavLink className="app-main-sidebar-link" to="/professions">PROFESSIONS</NavLink>
-              <NavLink className="app-main-sidebar-link" to="/traits">TRAITS</NavLink>
-              <NavLink className="app-main-sidebar-link" to="/skills">SKILLS</NavLink>
-              <NavLink className="app-main-sidebar-link" to="/equipment">EQUIPMENT</NavLink>
-              <NavLink className="app-main-sidebar-link" to="/analysis">ANALYSIS</NavLink>
-            </div>
-            <div className="app-main-routes">
-              <Route path="/" exact component={Characters} />
-              <Route path="/professions" component={Professions} />
-              <Route path="/traits" component={Traits} />
-              <Route path="/skills" component={Skills} />
-              <Route path="/equipment" component={Equipment} />
-              <Route path="/analysis" component={Analysis} />
-            </div>
+      <div className="app">
+        <div className="app-header">
+          <div className="app-header-logo">
+            <span>GW2</span><span className="app-header-logo-end">THEORYCRAFTER</span>
           </div>
         </div>
-      </Router>
+        <div className="app-main">
+          <div className="app-main-container">
+            <div className="app-main-container-header">
+              <i class="fas fa-caret-right"></i>
+              Characters
+            </div>
+            <Characters />
+          </div>
+          <Professions />
+          <Traits />
+          <Skills />
+          <Equipment />
+          <Analysis />
+        </div>
+      </div>
     );
   }
 }
