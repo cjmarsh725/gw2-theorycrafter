@@ -16,6 +16,40 @@ class App extends Component {
     skills: []
   }
 
+  roughSizeOfObject = ( object ) => {
+
+    var objectList = [];
+    var stack = [ object ];
+    var bytes = 0;
+
+    while ( stack.length ) {
+        var value = stack.pop();
+
+        if ( typeof value === 'boolean' ) {
+            bytes += 4;
+        }
+        else if ( typeof value === 'string' ) {
+            bytes += value.length * 2;
+        }
+        else if ( typeof value === 'number' ) {
+            bytes += 8;
+        }
+        else if
+        (
+            typeof value === 'object'
+            && objectList.indexOf( value ) === -1
+        )
+        {
+            objectList.push( value );
+
+            for( var i in value ) {
+                stack.push( value[ i ] );
+            }
+        }
+    }
+    return bytes;
+  }
+
   componentDidMount() {
     axios.get("https://api.guildwars2.com/v2/professions").then(response => {
       const professionList = response.data;
@@ -30,7 +64,12 @@ class App extends Component {
           professions[profession] = profData.find(data => data.id === profession);
         });
         axios.get("https://api.guildwars2.com/v2/skills?ids=all").then(response => {
-          console.log("All: " + response.data.length + " | Size: " + JSON.stringify(response.data).length);
+          const skills = response.data.filter(skill => {
+            if (skill.professions) return skill.professions.length > 0;
+            else return false;
+          });
+          console.log("Length: " + response.data.length + " | " + skills.length);
+          console.log("Size: " + this.roughSizeOfObject(response.data) + " | " + this.roughSizeOfObject(skills));
         }).catch(error => console.error("All skills request: " + error));
         const skillRequests = [];
         profData.forEach(data => {
