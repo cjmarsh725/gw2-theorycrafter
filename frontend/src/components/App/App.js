@@ -12,7 +12,9 @@ class App extends Component {
   state = {
     professionList: [],
     professions: {},
-    skills: []
+    skills: [],
+    currentProf: "Engineer",
+    isDivHidden: Array(6).fill(true)
   }
 
   componentDidMount() {
@@ -39,7 +41,29 @@ class App extends Component {
     }).catch(error => console.error("Profession list request: " + error));
   }
 
+  getCaretIcon = isHidden => {
+    if (isHidden) return <i className="fas fa-caret-right"></i>;
+    else return <i className="fas fa-caret-down"></i>;
+  }
+
+  toggleIsDivHidden = index => {
+    const { isDivHidden } = this.state;
+    isDivHidden[index] = !isDivHidden[index];
+    this.setState({ isDivHidden });
+  }
+
   render() {
+    const categories = ["Characters", "Professions", "Traits", "Skills", "Equipment", "Analysis"];
+    const components = [
+      <Characters />,
+      <Professions />,
+      <Traits />,
+      <Skills />,
+      <Equipment />,
+      <Analysis 
+        profession={this.state.professions[this.state.currentProf]}
+        skills={this.state.skills}/>
+    ]
     return (
       <div className="app">
         <div className="app-header">
@@ -48,18 +72,21 @@ class App extends Component {
           </div>
         </div>
         <div className="app-main">
-          <div className="app-main-container">
-            <div className="app-main-container-header">
-              <i className="fas fa-caret-right"></i>
-              Characters
-            </div>
-            <Characters />
-          </div>
-          <Professions />
-          <Traits />
-          <Skills />
-          <Equipment />
-          <Analysis />
+          {categories.map((category, i) => {
+            return (<>
+              <div className="app-main-container-header"
+                onClick={() => this.toggleIsDivHidden(i)}>
+                <span className="app-main-container-header-caret">
+                  {this.getCaretIcon(this.state.isDivHidden[i])}
+                </span>
+                {category}
+              </div>
+              <div className={"app-main-container" + (this.state.isDivHidden[i] ? 
+                              " app-main-container-hidden" : "")}>
+                {components[i]}
+              </div>
+            </>);
+          })}
         </div>
       </div>
     );
