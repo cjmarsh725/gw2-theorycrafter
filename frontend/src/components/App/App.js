@@ -63,9 +63,18 @@ class App extends Component {
           professions[profession] = profData.find(data => data.id === profession);
         });
         axios.get("https://api.guildwars2.com/v2/skills?ids=all").then(response => {
+          const profs = [];
+          let skillCheck = 0;
           const skills = response.data.filter(skill => {
-            if (skill.professions) return skill.professions.length > 0;
-            else return false;
+            if (skill.professions) {
+              if (skillCheck < 10 && skill.professions.length > 0) {
+                console.log(skill);
+                skillCheck++;
+              }
+              return skill.professions.length > 0;
+            } else {
+              return false;
+            }
           });
           console.log("Length: " + response.data.length + " | " + skills.length);
           console.log("Size: " + this.roughSizeOfObject(response.data) + " | " + this.roughSizeOfObject(skills));
@@ -87,9 +96,7 @@ class App extends Component {
             }
           });
         });
-        axios.all(skillRequests).then(response => {
-          console.log("Profession skills: " + response.length);
-        }).catch(error => console.error("Profession skills request: " + error));
+        console.log("Profession skills: " + skillRequests.length);
         this.setState({ professionList, professions });
       }).catch(error => console.error("Individual professions request: " + error));
     }).catch(error => console.error("Profession list request: " + error));
@@ -106,7 +113,7 @@ class App extends Component {
         <div className="app-main">
           <div className="app-main-container">
             <div className="app-main-container-header">
-              <i class="fas fa-caret-right"></i>
+              <i className="fas fa-caret-right"></i>
               Characters
             </div>
             <Characters />
