@@ -56,7 +56,9 @@ class App extends Component {
     const categories = ["Characters", "Professions", "Traits", "Skills", "Equipment", "Analysis"];
     const components = [
       <Characters />,
-      <Professions />,
+      <Professions 
+        professions={this.state.professions}
+        professionList={this.state.professionList}/>,
       <Traits />,
       <Skills />,
       <Equipment />,
