@@ -13,7 +13,7 @@ class App extends Component {
     professionList: [],
     professions: {},
     skills: [],
-    currentProf: "Engineer",
+    currentProfession: "Engineer",
     isDivHidden: Array(6).fill(false)
   }
 
@@ -58,12 +58,13 @@ class App extends Component {
       <Characters />,
       <Professions 
         professions={this.state.professions}
-        professionList={this.state.professionList}/>,
+        professionList={this.state.professionList}
+        changeProfession={prof => this.setState({ currentProfession: prof })}/>,
       <Traits />,
       <Skills />,
       <Equipment />,
       <Analysis 
-        profession={this.state.professions[this.state.currentProf]}
+        profession={this.state.professions[this.state.currentProfession]}
         skills={this.state.skills}/>
     ]
     return (
@@ -75,9 +76,9 @@ class App extends Component {
         </div>
         <div className="app-main">
           {categories.map((category, i) => {
-            return (<>
+            return (<React.Fragment key={category}>
               <div className="app-main-container-header"
-                onClick={() => this.toggleIsDivHidden(i)}>
+                  onClick={() => this.toggleIsDivHidden(i)}>
                 <span className="app-main-container-header-caret">
                   {this.getCaretIcon(this.state.isDivHidden[i])}
                 </span>
@@ -87,7 +88,7 @@ class App extends Component {
                               " app-main-container-hidden" : "")}>
                 {components[i]}
               </div>
-            </>);
+            </React.Fragment>);
           })}
         </div>
       </div>
