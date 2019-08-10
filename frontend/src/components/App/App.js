@@ -14,7 +14,7 @@ class App extends Component {
     professions: {},
     skills: [],
     currentProf: "Engineer",
-    isDivHidden: Array(6).fill(true)
+    isDivHidden: Array(6).fill(false)
   }
 
   componentDidMount() {
