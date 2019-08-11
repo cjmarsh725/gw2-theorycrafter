@@ -59,6 +59,7 @@ class App extends Component {
       <Professions 
         professions={this.state.professions}
         professionList={this.state.professionList}
+        currentProfession={this.state.currentProfession}
         changeProfession={prof => this.setState({ currentProfession: prof })}/>,
       <Traits />,
       <Skills />,
