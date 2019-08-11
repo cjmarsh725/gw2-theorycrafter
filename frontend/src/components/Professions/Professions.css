@@ -1,21 +1,21 @@
 .professions {
   display: flex;
   flex-wrap: wrap;
-  width: 1050px;
-  margin: 0 auto;
+  width: 720px;
+  margin: 10px auto;
 }
 
 .professions-select-btn {
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  padding-left: 24px;
+  padding-left: 10px;
   cursor: pointer;
-  width: 330px;
-  height: 80px;
-  margin: 10px;
+  width: 230px;
+  height: 50px;
+  margin: 5px;
   background-image: url("/img/profession-select.png");
-  background-position: 100% 101%;
+  background-position: 100% 102%;
   background-repeat: no-repeat;
   border-width: 1px;
   border-style: solid;
@@ -32,12 +32,7 @@
   border-image: linear-gradient(45deg, rgba(190,0,0,1) 0%, rgba(197,102,102,0.84) 50%, rgba(203,194,194,0) 95%, rgba(204,204,204,0) 100%) 1;
 }
 
-.professions-select-btn img {
-  width: 48px;
-  height: 48px;
-}
-
 .professions-select-btn-label {
-  font-size: 42px;
-  margin-left: 8px;
+  font-size: 24px;
+  margin-left: 6px;
 }
