@@ -9,27 +9,32 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-left: 24px;
   cursor: pointer;
   width: 330px;
   height: 80px;
   margin: 10px;
   background-image: url("/img/profession-select.png");
-  background-position: bottom left;
+  background-position: 100% 101%;
   background-repeat: no-repeat;
   border-width: 1px;
   border-style: solid;
-  border-image: linear-gradient(45deg, rgba(204,204,204,1) 0%, rgba(204,204,204,0.84) 43%, rgba(204,204,204,0) 91%, rgba(204,204,204,0) 100%) 1 round;
+  border-image: linear-gradient(45deg, rgba(204,204,204,1) 0%, rgba(204,204,204,0.84) 43%, rgba(204,204,204,0) 91%, rgba(204,204,204,0) 100%) 1;
 }
 
 .professions-select-btn:hover:not(.professions-select-btn-active) {
   background-image: url("/img/profession-select-highlight.png");
-  border-image: linear-gradient(45deg, rgba(221,221,221,1) 0%, rgba(211,211,211,0.84) 60%, rgba(205,205,205,0) 95%, rgba(204,204,204,0) 100%) 1 round;
+  border-image: linear-gradient(45deg, rgba(221,221,221,1) 0%, rgba(211,211,211,0.84) 60%, rgba(205,205,205,0) 95%, rgba(204,204,204,0) 100%) 1;
 }
 
 .professions-select-btn-active {
   background-image: url("/img/profession-select-active.png");
-  border-image: linear-gradient(45deg, rgba(190,0,0,1) 0%, rgba(197,102,102,0.84) 50%, rgba(203,194,194,0) 95%, rgba(204,204,204,0) 100%) 1 round;
+  border-image: linear-gradient(45deg, rgba(190,0,0,1) 0%, rgba(197,102,102,0.84) 50%, rgba(203,194,194,0) 95%, rgba(204,204,204,0) 100%) 1;
+}
+
+.professions-select-btn img {
+  width: 48px;
+  height: 48px;
 }
 
 .professions-select-btn-label {
