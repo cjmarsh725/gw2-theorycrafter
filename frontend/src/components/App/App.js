@@ -14,6 +14,7 @@ class App extends Component {
     professions: {},
     skills: [],
     currentProfession: "Engineer",
+    currentSkills: [],
     isDivHidden: Array(6).fill(false)
   }
 
@@ -62,7 +63,10 @@ class App extends Component {
         currentProfession={this.state.currentProfession}
         changeProfession={prof => this.setState({ currentProfession: prof })}/>,
       <Traits />,
-      <Skills />,
+      <Skills 
+        profession={this.state.professions[this.state.currentProfession]}
+        skills={this.state.skills}
+        currentSkills={this.state.currentSkills}/>,
       <Equipment />,
       <Analysis 
         profession={this.state.professions[this.state.currentProfession]}
